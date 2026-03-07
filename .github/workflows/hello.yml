@@ -18,7 +18,7 @@ jobs:
         run: date
         
       - name: Print branch name
-        run:echo Triggered by branch: "${{ github.ref_name }}"
+        run: echo "message to print:" ${{ github.var }}
         
       - name: List repository files
         run: ls -la
