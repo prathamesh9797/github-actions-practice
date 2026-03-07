@@ -18,7 +18,7 @@ jobs:
         run: date
         
       - name: Print branch name
-        run:echo "Branch: ${{ Branch: $GITHUB_REF }}"
+        run:echo Triggered by branch: "${{ github.ref_name }}"
         
       - name: List repository files
         run: ls -la
