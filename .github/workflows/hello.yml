@@ -10,5 +10,18 @@ jobs:
     steps:
       - name: Check out the code using actions/
         uses: actions/checkout@v4
+        
       - name: print hello from github actions!
         run: echo "hello from GitHub Actions"
+        
+      - name: Print current date and time
+        run: date
+        
+      - name: Print branch name
+        run: echo "Branch: ${{ github.ref_name }}"
+        
+      - name: List repository files
+        run: ls -la
+        
+      - name: Print runner operating system
+        run:echo "Runner OS: $RUNNER_OS"
