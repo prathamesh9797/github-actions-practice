@@ -27,6 +27,9 @@ jobs:
 
       - name: break the pipeline intentionally
         run: exit 1
+
+      - name: fixed the pipeline
+        run: echo "pipeline fixed"
         
       - name: Print runner operating system
         run: 'echo "Runner OS: $RUNNER_OS"'
