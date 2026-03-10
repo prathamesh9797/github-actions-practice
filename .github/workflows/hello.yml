@@ -20,7 +20,7 @@ jobs:
         run: date
         
       - name: Print branch name
-        run: echo "message to print:" ${{github.var}}
+        run: 'echo triggered by branch:"${{github.var}}"'
         
       - name: List repository files
         run: ls -la
