@@ -25,9 +25,6 @@ jobs:
       - name: List repository files
         run: ls -la
 
-      - name: break the pipeline intentionally
-        run: exit 1
-
       - name: fixed the pipeline
         run: echo "pipeline fixed"
         
