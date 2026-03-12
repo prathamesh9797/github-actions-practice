@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Prathamesh Joshi | Linux Engineer</title>
+<title>Prathamesh Joshi | DevOps Engineer</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
 
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 
 <style>
 
@@ -18,20 +16,21 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Inter;
-scroll-behavior:smooth;
 }
 
 body{
 background:#020617;
 color:white;
+font-family:Inter, sans-serif;
 overflow-x:hidden;
 }
 
-/* particles */
+/* 3D background */
 
-#particles-js{
+#bg{
 position:fixed;
+top:0;
+left:0;
 width:100%;
 height:100%;
 z-index:-1;
@@ -44,31 +43,22 @@ position:fixed;
 width:100%;
 display:flex;
 justify-content:space-between;
-padding:25px 8%;
+padding:20px 8%;
 background:rgba(255,255,255,0.03);
-backdrop-filter:blur(12px);
+backdrop-filter:blur(10px);
 border-bottom:1px solid rgba(255,255,255,0.05);
 z-index:10;
 }
 
-nav h2{
-font-weight:600;
-}
-
 nav ul{
 display:flex;
-gap:30px;
+gap:25px;
 list-style:none;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-transition:.3s;
-}
-
-nav a:hover{
-color:#22d3ee;
 }
 
 /* hero */
@@ -76,21 +66,20 @@ color:#22d3ee;
 .hero{
 height:100vh;
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 padding:0 10%;
 }
 
 /* terminal */
 
 .terminal{
-
 width:750px;
 background:#020617;
 border-radius:12px;
 border:1px solid rgba(255,255,255,0.1);
 box-shadow:0 20px 60px rgba(0,0,0,.7);
-font-family:"Source Code Pro";
+font-family:"Source Code Pro", monospace;
 }
 
 .terminal-header{
@@ -99,7 +88,7 @@ gap:8px;
 padding:10px;
 }
 
-.circle{
+.dot{
 width:12px;
 height:12px;
 border-radius:50%;
@@ -110,17 +99,26 @@ border-radius:50%;
 .green{background:#22c55e}
 
 .terminal-body{
-padding:25px;
-line-height:1.8;
-font-size:15px;
+padding:30px;
 }
 
-.command{
-color:#22d3ee;
+.command-line{
+display:flex;
+margin-top:10px;
 }
 
-.success{
-color:#4ade80;
+.prompt{
+color:#38bdf8;
+margin-right:8px;
+}
+
+input{
+background:transparent;
+border:none;
+outline:none;
+color:white;
+font-family:"Source Code Pro", monospace;
+width:100%;
 }
 
 /* sections */
@@ -129,28 +127,22 @@ section{
 padding:120px 10%;
 }
 
-/* titles */
-
 .title{
-font-size:38px;
+font-size:36px;
 text-align:center;
 margin-bottom:60px;
 }
 
-/* glass card */
+/* cards */
 
 .card{
-
-background:rgba(255,255,255,0.04);
+background:rgba(255,255,255,0.05);
 padding:40px;
 border-radius:15px;
 border:1px solid rgba(255,255,255,0.08);
 backdrop-filter:blur(10px);
-transition:.4s;
-}
-
-.card:hover{
-transform:translateY(-10px);
+max-width:800px;
+margin:auto;
 }
 
 /* skills */
@@ -162,15 +154,15 @@ gap:25px;
 }
 
 .skill{
-text-align:center;
 padding:30px;
-border-radius:12px;
 background:rgba(255,255,255,0.05);
+border-radius:10px;
+text-align:center;
 transition:.3s;
 }
 
 .skill:hover{
-background:#22d3ee22;
+background:#38bdf822;
 transform:scale(1.08);
 }
 
@@ -178,28 +170,15 @@ transform:scale(1.08);
 
 .pipeline{
 display:flex;
-justify-content:center;
-gap:20px;
 flex-wrap:wrap;
+gap:20px;
+justify-content:center;
 }
 
 .stage{
-
-padding:20px 30px;
-border-radius:10px;
+padding:18px 28px;
 background:rgba(255,255,255,0.05);
-transition:.3s;
-}
-
-.stage:hover{
-background:#22d3ee22;
-transform:translateY(-5px);
-}
-
-/* contact */
-
-.contact{
-text-align:center;
+border-radius:10px;
 }
 
 footer{
@@ -213,7 +192,7 @@ opacity:.6;
 
 <body>
 
-<div id="particles-js"></div>
+<canvas id="bg"></canvas>
 
 <nav>
 
@@ -233,33 +212,18 @@ opacity:.6;
 <div class="terminal">
 
 <div class="terminal-header">
-
-<div class="circle red"></div>
-<div class="circle yellow"></div>
-<div class="circle green"></div>
-
+<div class="dot red"></div>
+<div class="dot yellow"></div>
+<div class="dot green"></div>
 </div>
 
-<div class="terminal-body">
+<div class="terminal-body" id="terminal">
 
-<div><span class="command">$ whoami</span></div>
-<div class="success">Prathamesh Joshi</div>
+<div>Type commands: <b>about</b>, <b>skills</b>, <b>contact</b></div>
 
-<br>
-
-<div><span class="command">$ role</span></div>
-<div class="success">Linux Administrator / Application Support Engineer</div>
-
-<br>
-
-<div><span class="command">$ experience</span></div>
-<div class="success">3.8 Years – Production Infrastructure</div>
-
-<br>
-
-<div><span class="command">$ skills --list</span></div>
-<div class="success">
-Linux • ServiceNow • TeamCity • Bitbucket • AutoSys • CyberArk • Git
+<div class="command-line">
+<span class="prompt">$</span>
+<input id="cmd" autofocus>
 </div>
 
 </div>
@@ -273,19 +237,16 @@ Linux • ServiceNow • TeamCity • Bitbucket • AutoSys • CyberArk • Git
 <h2 class="title">About</h2>
 
 <div class="card">
-
-Linux Administrator with experience supporting enterprise banking
-infrastructure at TCS. Skilled in Linux system administration, incident
-management, production deployments and automation workflows using modern
-DevOps tools.
-
+Linux Administrator with 3.8 years experience supporting enterprise
+banking infrastructure at TCS. Skilled in Linux administration,
+production deployments, monitoring systems and automation pipelines.
 </div>
 
 </section>
 
 <section id="skills">
 
-<h2 class="title">Core Skills</h2>
+<h2 class="title">Skills</h2>
 
 <div class="skills">
 
@@ -304,7 +265,7 @@ DevOps tools.
 
 <section id="pipeline">
 
-<h2 class="title">Deployment Pipeline</h2>
+<h2 class="title">DevOps Pipeline</h2>
 
 <div class="pipeline">
 
@@ -318,33 +279,103 @@ DevOps tools.
 
 </section>
 
-<section id="contact" class="contact">
+<section id="contact">
 
 <h2 class="title">Contact</h2>
 
-<p>Email: prathameshjoshi321@gmail.com</p>
-<p>Phone: 8275404326</p>
-<p>LinkedIn: linkedin.com/in/prathamesh-joshi-548934146</p>
+<div class="card">
+
+Email: prathameshjoshi321@gmail.com  
+Phone: 8275404326  
+LinkedIn: linkedin.com/in/prathamesh-joshi-548934146
+
+</div>
 
 </section>
 
 <footer>
-
 © 2026 Prathamesh Joshi
-
 </footer>
 
 <script>
 
-particlesJS("particles-js",{
-particles:{
-number:{value:80},
-size:{value:3},
-color:{value:"#22d3ee"},
-line_linked:{enable:true,color:"#22d3ee"},
-move:{speed:1}
+/* terminal commands */
+
+const input=document.getElementById("cmd")
+const terminal=document.getElementById("terminal")
+
+input.addEventListener("keydown",function(e){
+
+if(e.key==="Enter"){
+
+let cmd=input.value.trim()
+
+let output=document.createElement("div")
+
+if(cmd==="about"){
+output.textContent="Linux Administrator with 3.8 years experience supporting banking infrastructure."
 }
+
+else if(cmd==="skills"){
+output.textContent="Linux, ServiceNow, TeamCity, Bitbucket, CyberArk, AutoSys"
+}
+
+else if(cmd==="contact"){
+output.textContent="Email: prathameshjoshi321@gmail.com"
+}
+
+else{
+output.textContent="Command not found"
+}
+
+terminal.appendChild(output)
+
+input.value=""
+
+}
+
 })
+
+/* 3D background */
+
+const canvas=document.getElementById("bg")
+const scene=new THREE.Scene()
+
+const camera=new THREE.PerspectiveCamera(
+75,
+window.innerWidth/window.innerHeight,
+0.1,
+1000
+)
+
+camera.position.z=5
+
+const renderer=new THREE.WebGLRenderer({canvas})
+renderer.setSize(window.innerWidth,window.innerHeight)
+
+const geometry=new THREE.IcosahedronGeometry(4,1)
+
+const material=new THREE.MeshBasicMaterial({
+color:0x38bdf8,
+wireframe:true
+})
+
+const mesh=new THREE.Mesh(geometry,material)
+
+scene.add(mesh)
+
+function animate(){
+
+requestAnimationFrame(animate)
+
+mesh.rotation.x+=0.003
+mesh.rotation.y+=0.004
+
+renderer.render(scene,camera)
+
+}
+
+animate()
 
 </script>
 
