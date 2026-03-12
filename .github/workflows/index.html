@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Prathamesh Joshi | Linux Administrator</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#0f172a;
+color:white;
+overflow-x:hidden;
+}
+
+/* animated gradient */
+
+body::before{
+content:"";
+position:fixed;
+width:200%;
+height:200%;
+background: radial-gradient(circle at 30% 30%,#2563eb,transparent),
+radial-gradient(circle at 70% 70%,#7c3aed,transparent),
+radial-gradient(circle at 80% 20%,#06b6d4,transparent);
+animation: moveBg 15s infinite alternate;
+z-index:-1;
+}
+
+@keyframes moveBg{
+0%{transform:translate(0,0)}
+100%{transform:translate(-10%, -10%)}
+}
+
+/* navbar */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px 8%;
+position:fixed;
+width:100%;
+backdrop-filter:blur(12px);
+background:rgba(255,255,255,0.05);
+border-bottom:1px solid rgba(255,255,255,0.08);
+z-index:10;
+}
+
+nav h2{
+font-weight:600;
+letter-spacing:1px;
+}
+
+nav ul{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+transition:.3s;
+}
+
+nav a:hover{
+color:#38bdf8;
+}
+
+/* hero */
+
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:0 10%;
+}
+
+.glass{
+background:rgba(255,255,255,0.06);
+padding:60px;
+border-radius:20px;
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,0.1);
+box-shadow:0 15px 40px rgba(0,0,0,.5);
+transition:.4s;
+}
+
+.glass:hover{
+transform:translateY(-8px);
+}
+
+.hero h1{
+font-size:56px;
+margin-bottom:10px;
+}
+
+.hero span{
+color:#38bdf8;
+}
+
+.hero p{
+opacity:.8;
+margin-bottom:30px;
+}
+
+.buttons{
+display:flex;
+gap:20px;
+justify-content:center;
+}
+
+.btn{
+padding:12px 28px;
+border-radius:30px;
+border:none;
+cursor:pointer;
+font-weight:500;
+transition:.3s;
+}
+
+.primary{
+background:#38bdf8;
+color:#0f172a;
+}
+
+.primary:hover{
+transform:scale(1.1);
+}
+
+.secondary{
+background:transparent;
+border:1px solid #38bdf8;
+color:#38bdf8;
+}
+
+.secondary:hover{
+background:#38bdf8;
+color:#0f172a;
+}
+
+/* sections */
+
+section{
+padding:120px 10%;
+}
+
+.section-title{
+text-align:center;
+font-size:38px;
+margin-bottom:60px;
+}
+
+/* about */
+
+.about{
+max-width:800px;
+margin:auto;
+text-align:center;
+opacity:.9;
+}
+
+/* skills */
+
+.skills{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px;
+}
+
+.skill-card{
+background:rgba(255,255,255,0.05);
+padding:30px;
+border-radius:15px;
+text-align:center;
+transition:.4s;
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.skill-card:hover{
+transform:translateY(-10px) scale(1.05);
+background:rgba(56,189,248,0.15);
+}
+
+/* experience */
+
+.exp{
+max-width:900px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:30px;
+}
+
+.exp-card{
+background:rgba(255,255,255,0.05);
+padding:35px;
+border-radius:15px;
+transition:.4s;
+}
+
+.exp-card:hover{
+transform:translateY(-8px);
+}
+
+/* achievements */
+
+.achievements{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.achievement{
+padding:25px;
+border-radius:15px;
+background:rgba(255,255,255,0.05);
+transition:.3s;
+}
+
+.achievement:hover{
+transform:scale(1.05);
+background:rgba(56,189,248,0.2);
+}
+
+/* contact */
+
+.contact{
+text-align:center;
+}
+
+footer{
+text-align:center;
+padding:40px;
+opacity:.6;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<h2>Prathamesh</h2>
+
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#achievements">Achievements</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+
+<div class="glass">
+
+<h1>Prathamesh <span>Joshi</span></h1>
+
+<p>
+Linux Administrator • Application Support Engineer  
+3.8 Years Experience | Production Infrastructure | Automation
+</p>
+
+<div class="buttons">
+
+<button class="btn primary">Download Resume</button>
+
+<button class="btn secondary">LinkedIn</button>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<h2 class="section-title">About</h2>
+
+<p class="about">
+Linux Administrator with 3.8 years of experience supporting enterprise
+banking infrastructure. Experienced with RedHat, Ubuntu and CentOS
+servers, production deployments, monitoring systems and automation tools
+including ServiceNow, TeamCity, Bitbucket, AutoSys and CyberArk.
+</p>
+
+</section>
+
+<section id="skills">
+
+<h2 class="section-title">Skills</h2>
+
+<div class="skills">
+
+<div class="skill-card">Linux Administration</div>
+<div class="skill-card">ServiceNow</div>
+<div class="skill-card">TeamCity</div>
+<div class="skill-card">Bitbucket</div>
+<div class="skill-card">CyberArk</div>
+<div class="skill-card">Git</div>
+<div class="skill-card">NDM & MQ</div>
+<div class="skill-card">AutoSys</div>
+<div class="skill-card">Patch Management</div>
+<div class="skill-card">Incident Management</div>
+
+</div>
+
+</section>
+
+<section id="experience">
+
+<h2 class="section-title">Experience</h2>
+
+<div class="exp">
+
+<div class="exp-card">
+
+<h3>Tata Consultancy Services</h3>
+
+<p><b>Linux Administrator & Application Support Engineer</b></p>
+
+<p>2020 – 2024 | Pune</p>
+
+<ul>
+
+<li>Managed enterprise Linux servers (RHEL, Ubuntu, CentOS)</li>
+<li>Handled production deployments via TeamCity and uDeploy</li>
+<li>Implemented ServiceNow change management workflows</li>
+<li>Configured SSH, SFTP and user privilege access</li>
+<li>Handled incident resolution and root cause analysis</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="achievements">
+
+<h2 class="section-title">Achievements</h2>
+
+<div class="achievements">
+
+<div class="achievement">🏆 Learning Achievement Award</div>
+
+<div class="achievement">⭐ Star of the Month – Multiple Times</div>
+
+<div class="achievement">🔧 RCA for long pending production issue</div>
+
+<div class="achievement">🎖 Service Commitment Award – TCS</div>
+
+</div>
+
+</section>
+
+<section id="contact" class="contact">
+
+<h2 class="section-title">Contact</h2>
+
+<p>Email: prathameshjoshi321@gmail.com</p>
+<p>Phone: 8275404326</p>
+<p>Location: India</p>
+
+</section>
+
+<footer>
+
+© 2026 Prathamesh Joshi
+
+</footer>
+
+<script>
+
+ScrollReveal().reveal('.glass',{delay:200});
+ScrollReveal().reveal('.skill-card',{interval:100});
+ScrollReveal().reveal('.exp-card',{delay:200});
+ScrollReveal().reveal('.achievement',{interval:100});
+
+</script>
+
+</body>
+</html>
