@@ -1,0 +1,21 @@
+name: Self Hosted Runner
+
+on:
+    push:
+
+jobs:
+    self-hosted-runner:
+        runs-on: self-hosted
+
+        steps:
+            - name: Print the hostname of the machine 
+              run: hostname
+
+            - name: Print the working directory
+              run: pwd
+
+            - name: Create a file
+              run: touch test.txt
+
+            - name: verify file exists
+              run: ls -l test.txt
