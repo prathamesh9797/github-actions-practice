@@ -15,7 +15,7 @@ jobs:
 
                 exclude:
                     - os: windows-latest
-                    python-version: "3.10"
+                      python-version: "3.10"
 
         steps:
             - name: checkout repo
