@@ -31,3 +31,7 @@ jobs:
 
             - name: run linter
               run: flake8 app.py
+
+            - name: Simulate failure
+              if: matrix.python-version == '3.11'
+              run: exit 1
