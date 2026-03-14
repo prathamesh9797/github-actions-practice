@@ -16,13 +16,11 @@ jobs:
     windows-job:
         runs-on: windows-latest
         steps:
-            - name: print runner info
-              shell: cmd
-              run: |
-                    echo OS: %OS%
-                    hostname
-                    whoami
-                
+           - name: Print runner info
+             run: |
+                   echo OS: $env:OS
+                   hostname
+                   whoami
 
     macos-job:
         runs-on: macos-latest
