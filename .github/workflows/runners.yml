@@ -17,11 +17,12 @@ jobs:
         runs-on: windows-latest
         steps:
             - name: print runner info
+              shell: cmd
               run: |
                     echo OS: %OS%
                     hostname
                     whoami
-                    shell: cmd
+                
 
     macos-job:
         runs-on: macos-latest
