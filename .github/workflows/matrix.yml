@@ -1,4 +1,4 @@
-name: Matrix Build
+name: Python Lint
 
 on:
     push:
