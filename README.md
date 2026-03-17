@@ -1,0 +1,1 @@
+[![docker cicd](https://github.com/prathamesh9797/github-actions-practice/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/prathamesh9797/github-actions-practice/actions/workflows/docker-publish.yml)
