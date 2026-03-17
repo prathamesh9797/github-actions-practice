@@ -1,10 +1,10 @@
-name: Docker CI/CD
+name: docker cicd
 
 on:
   push:
     branches:
       - main
-      - '*'
+      - feature/**
   pull_request:
 
 jobs:
@@ -25,7 +25,8 @@ jobs:
       - name: Set short SHA
         run: echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
 
-      - name: Build and Push (Main Branch)
+      # Build + Push ONLY on main
+      - name: Build and Push Docker Image
         if: github.ref_name == 'main'
         uses: docker/build-push-action@v6
         with:
@@ -35,7 +36,8 @@ jobs:
             ${{ secrets.DOCKER_USERNAME }}/webapp:latest
             ${{ secrets.DOCKER_USERNAME }}/webapp:sha-${{ env.SHORT_SHA }}
 
-      - name: Build Only (Other Branches)
+      # Build ONLY for feature branches / PRs
+      - name: Build Docker Image (No Push)
         if: github.ref_name != 'main'
         uses: docker/build-push-action@v6
         with:
