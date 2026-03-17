@@ -1,0 +1,24 @@
+name: Conditionals Demo
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  conditional-job:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Step that runs only on main branch
+        if: github.ref == 'refs/heads/main'
+        run: echo "Running on main branch"
+
+      - name: Step that intentionally fails
+        id: fail_step
+        run: exit 1
+        continue-on-error: true
+
+      - name: Run only if previous step failed
+        if: failure()
+        run: echo "Previous step failed, running recovery step"

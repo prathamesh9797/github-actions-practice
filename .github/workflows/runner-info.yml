@@ -1,0 +1,21 @@
+name: Runner information
+
+on:
+    push:
+
+jobs:
+    runner-information:
+        runs-on: ubuntu-latest
+        steps:
+
+            - name: Print docker version
+              run: docker --version
+
+            - name: Print python version
+              run: python --version
+
+            - name: Print node version
+              run: node --version
+
+            - name: Print GIT Version
+              run: git --version
