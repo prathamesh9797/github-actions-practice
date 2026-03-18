@@ -24,13 +24,13 @@ runs:
       id: greet
       shell: bash
       run: |
-          case "${{ inputs.language }}" in
+        case "${{ inputs.language }}" in
           fr) echo "Bonjour, ${{ inputs.name }}!" ;;
           es) echo "Hola, ${{ inputs.name }}!" ;;
           *) echo "Hello, ${{ inputs.name }}!" ;;
-          esac
+        esac
 
-      echo "Current Date: $(date)"
-      echo "Runner OS: $RUNNER_OS"
+        echo "Current Date: $(date)"
+        echo "Runner OS: $RUNNER_OS"
 
-      echo "greeted=true" >> $GITHUB_OUTPUT
+        echo "greeted=true" >> $GITHUB_OUTPUT
