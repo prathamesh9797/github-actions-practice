@@ -1,13 +1,12 @@
 name: Ignore Docs Workflow
 
 on:
-  push:
-    branches:
-      - main
-      - 'release/*'
+  workflow_dispatch:
+     - main
+     - 'release/*'
     paths-ignore:
-      - '*.md'
-      - 'docs/**'
+     - '*.md'
+     - 'docs/**'
 
 jobs:
   build:

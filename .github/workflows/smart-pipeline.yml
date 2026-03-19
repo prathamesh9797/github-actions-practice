@@ -1,9 +1,8 @@
 name: Pipeline Summary
 
 on:
-  push:
-    branches:
-      - '**'   # triggers on push to any branch
+  workflow_dispatch:
+    - '**'   # triggers on push to any branch
 
 jobs:
   lint:

@@ -1,7 +1,7 @@
 name: Runner information
 
 on:
-    push:
+    workflow_dispatch:
 
 jobs:
     runner-information:

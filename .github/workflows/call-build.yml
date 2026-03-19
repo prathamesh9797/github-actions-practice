@@ -1,8 +1,7 @@
 name: call reusable build workflow
 
 on:
- push:
-  branches: [main]
+ workflow_dispatch
 
 jobs:
   call-reusable-build:
